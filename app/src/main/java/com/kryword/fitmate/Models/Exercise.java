@@ -1,15 +1,17 @@
 package com.kryword.fitmate.Models;
 
+import android.net.Uri;
+
 public class Exercise {
     private String id;
     private String name;
     private String description;
-    private String image;
+    private Uri image;
 
     public Exercise() {
     }
 
-    public Exercise(String id, String name, String description, String image) {
+    public Exercise(String id, String name, String description, Uri image) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -32,11 +34,11 @@ public class Exercise {
         this.description = description;
     }
 
-    public String getImage() {
+    public Uri getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(Uri image) {
         this.image = image;
     }
 

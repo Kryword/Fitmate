@@ -9,6 +9,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import pl.droidsonroids.gif.GifDrawable;
@@ -35,8 +38,15 @@ public class NewExerciseActivity extends AppCompatActivity {
         if(requestCode == REQUEST_PICTURE && resultCode == RESULT_OK){
             Log.d("FILE", "onActivityResult: " + data.getDataString());
             imagePath = data.getData();
-            GifImageView gifView = findViewById(R.id.gifViewer);
-            gifView.setImageURI(imagePath);
+            try {
+                File file = new File(getFilesDir(), FileManagerHelper.getFileName(imagePath, getApplicationContext()));
+                FileManagerHelper.copy(getContentResolver().openInputStream(imagePath), file);
+                imagePath = Uri.parse(file.toURI().toString());
+                GifImageView gifView = findViewById(R.id.gifViewer);
+                gifView.setImageURI(imagePath);
+            }catch(IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -52,7 +62,7 @@ public class NewExerciseActivity extends AppCompatActivity {
         Bundle bundle = new Bundle();
         bundle.putString("name", titleText.getText().toString());
         bundle.putString("description", descriptionText.getText().toString());
-        bundle.putString("image", imagePath.getPath());
+        bundle.putParcelable("image", imagePath);
         intent.putExtras(bundle);
         setResult(RESULT_OK, intent);
         finish();

@@ -1,5 +1,7 @@
 package com.kryword.fitmate.Models;
 
+import android.net.Uri;
+
 public class SessionExercise extends Exercise {
     private int setsMin;
     private int repetitionsMin;
@@ -10,7 +12,7 @@ public class SessionExercise extends Exercise {
     private int weightMin;
     private int weightMax;
 
-    public SessionExercise(String id, String name, String description, String image, int setsMin, int repetitionsMin, int setsMax, int repetitionsMax, int waitMin, int waitMax) {
+    public SessionExercise(String id, String name, String description, Uri image, int setsMin, int repetitionsMin, int setsMax, int repetitionsMax, int waitMin, int waitMax) {
         super(id, name, description, image);
         this.setsMin = setsMin;
         this.repetitionsMin = repetitionsMin;
@@ -20,7 +22,7 @@ public class SessionExercise extends Exercise {
         this.waitMax = waitMax;
     }
 
-    public SessionExercise(String id, String name, String description, String image, int setsMin, int repetitionsMin, int setsMax, int repetitionsMax, int waitMin, int waitMax, int weightMin, int weightMax) {
+    public SessionExercise(String id, String name, String description, Uri image, int setsMin, int repetitionsMin, int setsMax, int repetitionsMax, int waitMin, int waitMax, int weightMin, int weightMax) {
         super(id, name, description, image);
         this.setsMin = setsMin;
         this.repetitionsMin = repetitionsMin;

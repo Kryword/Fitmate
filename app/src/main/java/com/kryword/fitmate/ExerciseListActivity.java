@@ -2,12 +2,14 @@ package com.kryword.fitmate;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.kryword.fitmate.Models.Exercise;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,7 +28,7 @@ public class ExerciseListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise_list);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.exercise_item, R.id.title);
+        ExerciseAdapter adapter = new ExerciseAdapter(getApplicationContext());
         ListView listView = findViewById(R.id.list_exercises);
         listView.setAdapter(adapter);
         File fileDir = getFilesDir();
@@ -36,6 +38,8 @@ public class ExerciseListActivity extends AppCompatActivity {
         }else{
             for (File exerciseFile :
                     list) {
+                // Uncomment next line when you need to delete all exercises
+                // exerciseFile.delete();
                 String exerciseJSONString = "";
                 try {
                     FileInputStream fis = new FileInputStream(exerciseFile);
@@ -49,8 +53,13 @@ public class ExerciseListActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 try {
-                    JSONObject exercise = new JSONObject(exerciseJSONString);
-                    adapter.add(exercise.toString());
+                    JSONObject exerciseJSON = new JSONObject(exerciseJSONString);
+                    Exercise exercise = new Exercise();
+                    exercise.setName(exerciseJSON.getString("name"));
+                    exercise.setDescription(exerciseJSON.getString("description"));
+                    Log.d("A SABER", (String)exerciseJSON.get("image"));
+                    exercise.setImage(Uri.parse((String)exerciseJSON.get("image")));
+                    adapter.add(exercise);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -69,7 +78,7 @@ public class ExerciseListActivity extends AppCompatActivity {
                 String objectName = bundle.getString("name");
                 exercise.put("name", objectName);
                 exercise.put("description", bundle.getString("description"));
-                exercise.put("image", bundle.getString("image"));
+                exercise.put("image", bundle.getParcelable("image"));
                 String filename = objectName + ".json";
                 FileOutputStream fos = openFileOutput(filename, Context.MODE_PRIVATE);
                 fos.write(exercise.toString().getBytes());
