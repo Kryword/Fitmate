@@ -8,16 +8,18 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.kryword.fitmate.Models.SessionElement;
+import com.kryword.fitmate.Models.SessionPlan;
 
 import java.util.List;
 
 public class SessionAdapter extends BaseAdapter {
-    List<SessionElement> data;
+    List<SessionPlan> data;
     private static LayoutInflater inflater = null;
+    Context context;
 
-    public SessionAdapter(Context context, List<SessionElement> data) {
+    public SessionAdapter(Context context, List<SessionPlan> data) {
         this.data = data;
+        this.context = context;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -29,9 +31,11 @@ public class SessionAdapter extends BaseAdapter {
         }
         TextView title = vi.findViewById(R.id.title);
         TextView description = vi.findViewById(R.id.description);
-        SessionElement session = data.get(position);
+        TextView nrExercises = vi.findViewById(R.id.nr_exercises);
+        SessionPlan session = data.get(position);
         title.setText(session.getTitle());
         description.setText(session.getDescription());
+        nrExercises.setText(context.getString(R.string.nr_exercises) + ": " + session.getExercises().size());
         return vi;
     }
 

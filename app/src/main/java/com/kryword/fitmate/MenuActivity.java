@@ -14,7 +14,12 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void listSessions(View view){
-        Intent intent = new Intent(getApplicationContext(), ListActivity.class);
+        Intent intent = new Intent(getApplicationContext(), SessionListActivity.class);
+        startActivity(intent);
+    }
+
+    public void listExercises(View view){
+        Intent intent = new Intent(getApplicationContext(), ExerciseListActivity.class);
         startActivity(intent);
     }
 }

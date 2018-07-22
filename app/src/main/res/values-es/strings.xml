@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="list_button_string">Lista de Sesiones</string>
+    <string name="nr_exercises">Cantidad de ejercicios</string>
+    <string name="list_button_exercises_string">Lista de ejercicios</string>
+    <string name="add_gif">Añade imagen o gif</string>
+    <string name="create_exercise_button_text">Crea ejercicio</string>
+    <string name="cancel_text">Cancelar</string>
 </resources>

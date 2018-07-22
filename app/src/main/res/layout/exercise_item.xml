@@ -17,10 +17,4 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="Description" />
-    <TextView
-        android:id="@+id/nr_exercises"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Number of exercises" />
 </LinearLayout>

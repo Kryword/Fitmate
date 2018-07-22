@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name" translatable="false">Fitmate</string>
     <string name="list_button_string">List of Sessions</string>
+    <string name="list_button_exercises_string">List of Exercises</string>
+    <string name="nr_exercises">Number of exercises</string>
+    <string name="add_gif">Click to add image or gif</string>
+    <string name="create_exercise_button_text">Create exercise</string>
+    <string name="cancel_text">Cancel</string>
 </resources>
