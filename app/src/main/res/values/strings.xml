@@ -6,4 +6,6 @@
     <string name="add_gif">Click to add image or gif</string>
     <string name="create_exercise_button_text">Create exercise</string>
     <string name="cancel_text">Cancel</string>
+    <string name="hint_name_exercise">Name</string>
+    <string name="hint_description_exercise">Description of the exercise</string>
 </resources>
