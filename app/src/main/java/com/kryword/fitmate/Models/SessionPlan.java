@@ -7,7 +7,10 @@ public class SessionPlan {
     private int id;
     private String title;
     private String description;
-    private List<Exercise> exercises;
+    private List<SessionExercise> exercises;
+
+    public SessionPlan(){
+    }
 
     public SessionPlan(int id, String title, String description) {
         this.id = id;
@@ -16,7 +19,7 @@ public class SessionPlan {
         exercises = new ArrayList<>();
     }
 
-    public SessionPlan(int id, String title, String description, List<Exercise> exercises) {
+    public SessionPlan(int id, String title, String description, List<SessionExercise> exercises) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -47,11 +50,11 @@ public class SessionPlan {
         this.description = description;
     }
 
-    public List<Exercise> getExercises() {
+    public List<SessionExercise> getExercises() {
         return exercises;
     }
 
-    public void setExercises(List<Exercise> exercises) {
+    public void setExercises(List<SessionExercise> exercises) {
         this.exercises = exercises;
     }
 

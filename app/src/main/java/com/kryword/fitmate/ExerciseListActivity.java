@@ -23,12 +23,12 @@ import java.io.IOException;
 public class ExerciseListActivity extends AppCompatActivity {
 
     private static final int REQUEST_CODE_NEW_EXERCISE = 1;
-
+    ExerciseAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise_list);
-        ExerciseAdapter adapter = new ExerciseAdapter(getApplicationContext());
+        adapter = new ExerciseAdapter(getApplicationContext());
         ListView listView = findViewById(R.id.list_exercises);
         listView.setAdapter(adapter);
         File fileDir = getFilesDir();
@@ -70,19 +70,22 @@ public class ExerciseListActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == REQUEST_CODE_NEW_EXERCISE && resultCode == RESULT_OK){
             Bundle bundle = data.getExtras();
             try {
                 JSONObject exercise = new JSONObject();
-                String objectName = bundle.getString("name");
-                exercise.put("name", objectName);
-                exercise.put("description", bundle.getString("description"));
+                Exercise exerciseObject = new Exercise();
+                exerciseObject.setName(bundle.getString("name"));
+                exerciseObject.setDescription(bundle.getString("description"));
+                exerciseObject.setImage((Uri)bundle.getParcelable("image"));
+                exercise.put("name", exerciseObject.getName());
+                exercise.put("description", exerciseObject.getDescription());
                 exercise.put("image", bundle.getParcelable("image"));
-                String filename = objectName + ".json";
+                String filename = exerciseObject.getName() + ".json";
                 FileOutputStream fos = openFileOutput(filename, Context.MODE_PRIVATE);
                 fos.write(exercise.toString().getBytes());
                 fos.close();
+                adapter.add(exerciseObject);
             } catch (JSONException e) {
                 e.printStackTrace();
             } catch (FileNotFoundException e) {
