@@ -2,6 +2,9 @@ package com.kryword.fitmate.Models;
 
 import android.net.Uri;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class SessionExercise extends Exercise {
     private int setsMin;
     private int repetitionsMin;
@@ -108,5 +111,19 @@ public class SessionExercise extends Exercise {
                 ", waitMin=" + waitMin +
                 ", waitMax=" + waitMax +
                 "} " + super.toString();
+    }
+
+    public JSONObject toJSON() throws JSONException {
+        JSONObject sessionExercise = new JSONObject();
+        sessionExercise.put("name", getName());
+        sessionExercise.put("description", getDescription());
+        sessionExercise.put("image", getImage());
+        sessionExercise.put("setsMin", setsMin);
+        sessionExercise.put("setsMax", setsMin);
+        sessionExercise.put("repetitionsMin", setsMin);
+        sessionExercise.put("repetitionsMax", setsMin);
+        sessionExercise.put("waitMin", setsMin);
+        sessionExercise.put("waitMax", setsMin);
+        return sessionExercise;
     }
 }

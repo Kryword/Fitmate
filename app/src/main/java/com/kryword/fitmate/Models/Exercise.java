@@ -2,6 +2,9 @@ package com.kryword.fitmate.Models;
 
 import android.net.Uri;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class Exercise {
     private String id;
     private String name;
@@ -50,5 +53,14 @@ public class Exercise {
                 ", description='" + description + '\'' +
                 ", image='" + image + '\'' +
                 '}';
+    }
+
+    public JSONObject toJSON() throws JSONException {
+        JSONObject exercise = new JSONObject();
+        exercise.put("id", id);
+        exercise.put("name", name);
+        exercise.put("description", description);
+        exercise.put("image", image);
+        return exercise;
     }
 }

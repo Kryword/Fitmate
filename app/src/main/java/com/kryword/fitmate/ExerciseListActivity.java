@@ -73,14 +73,11 @@ public class ExerciseListActivity extends AppCompatActivity {
         if (requestCode == REQUEST_CODE_NEW_EXERCISE && resultCode == RESULT_OK){
             Bundle bundle = data.getExtras();
             try {
-                JSONObject exercise = new JSONObject();
                 Exercise exerciseObject = new Exercise();
                 exerciseObject.setName(bundle.getString("name"));
                 exerciseObject.setDescription(bundle.getString("description"));
                 exerciseObject.setImage((Uri)bundle.getParcelable("image"));
-                exercise.put("name", exerciseObject.getName());
-                exercise.put("description", exerciseObject.getDescription());
-                exercise.put("image", bundle.getParcelable("image"));
+                JSONObject exercise = exerciseObject.toJSON();
                 String filename = exerciseObject.getName() + ".json";
                 FileOutputStream fos = openFileOutput(filename, Context.MODE_PRIVATE);
                 fos.write(exercise.toString().getBytes());
