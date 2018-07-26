@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SessionExerciseActivity">
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/gifView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name" />
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gifView"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/setsText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/description" />
+
+    <EditText
+        android:id="@+id/minSets"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="@string/min"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/minRepetitions"
+        app:layout_constraintEnd_toStartOf="@+id/setsText"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gifView" />
+
+    <EditText
+        android:id="@+id/maxSets"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="@string/max"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/maxRepetitions"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/setsText"
+        app:layout_constraintTop_toBottomOf="@+id/gifView" />
+
+    <EditText
+        android:id="@+id/minRepetitions"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="@string/min"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/minWait"
+        app:layout_constraintEnd_toStartOf="@+id/repetitionsText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/minSets" />
+
+    <EditText
+        android:id="@+id/maxRepetitions"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="@string/max"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/maxWait"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/repetitionsText"
+        app:layout_constraintTop_toBottomOf="@+id/maxSets" />
+
+    <EditText
+        android:id="@+id/minWait"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="@string/min"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/minWeight"
+        app:layout_constraintEnd_toStartOf="@+id/waitText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/minRepetitions" />
+
+    <EditText
+        android:id="@+id/maxWait"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="@string/max"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/maxWeight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/waitText"
+        app:layout_constraintTop_toBottomOf="@+id/maxRepetitions" />
+
+    <EditText
+        android:id="@+id/minWeight"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="@string/min"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/cancel"
+        app:layout_constraintEnd_toStartOf="@+id/weightText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/minWait" />
+
+    <EditText
+        android:id="@+id/maxWeight"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="@string/max"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/addExercise"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/weightText"
+        app:layout_constraintTop_toBottomOf="@+id/maxWait" />
+
+    <TextView
+        android:id="@+id/weightText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/weight"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/addExercise"
+        app:layout_constraintEnd_toStartOf="@+id/maxWeight"
+        app:layout_constraintStart_toEndOf="@+id/minWeight"
+        app:layout_constraintTop_toBottomOf="@+id/waitText" />
+
+    <TextView
+        android:id="@+id/waitText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/wait"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/weightText"
+        app:layout_constraintEnd_toStartOf="@+id/maxWait"
+        app:layout_constraintStart_toEndOf="@+id/minWait"
+        app:layout_constraintTop_toBottomOf="@+id/repetitionsText" />
+
+    <TextView
+        android:id="@+id/repetitionsText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/repetitions"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/waitText"
+        app:layout_constraintEnd_toStartOf="@+id/maxRepetitions"
+        app:layout_constraintStart_toEndOf="@+id/minRepetitions"
+        app:layout_constraintTop_toBottomOf="@+id/setsText" />
+
+    <TextView
+        android:id="@+id/setsText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/sets"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/repetitionsText"
+        app:layout_constraintEnd_toStartOf="@+id/maxSets"
+        app:layout_constraintStart_toEndOf="@+id/minSets"
+        app:layout_constraintTop_toBottomOf="@+id/gifView" />
+
+    <Button
+        android:id="@+id/addExercise"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="addExercise"
+        android:text="@string/add_exercise_session"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cancel"
+        app:layout_constraintTop_toBottomOf="@+id/maxWeight" />
+
+    <Button
+        android:id="@+id/cancel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:onClick="cancel"
+        android:text="@string/cancel_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/addExercise"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/minWeight" />
+
+</android.support.constraint.ConstraintLayout>

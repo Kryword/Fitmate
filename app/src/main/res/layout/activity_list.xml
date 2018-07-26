@@ -25,5 +25,6 @@
         android:clickable="true"
         app:backgroundTint="@android:color/background_light"
         app:elevation="0dp"
-        app:srcCompat="@drawable/plus_circle" />
+        app:srcCompat="@drawable/plus_circle"
+        android:onClick="createSession"/>
 </RelativeLayout>

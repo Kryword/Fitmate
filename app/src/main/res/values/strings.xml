@@ -8,4 +8,15 @@
     <string name="cancel_text">Cancel</string>
     <string name="hint_name_exercise">Name</string>
     <string name="hint_description_exercise">Description of the exercise</string>
+    <string name="hint_title_session">Title</string>
+    <string name="hint_description_session">Description of the session</string>
+    <string name="hint_times_a_week">How much times a week?</string>
+    <string name="add_exercise_session">Add an exercise</string>
+    <string name="create_session_button_text">Create Session</string>
+    <string name="min">Minimum</string>
+    <string name="max">Maximum</string>
+    <string name="sets">Sets</string>
+    <string name="repetitions">Repetitions</string>
+    <string name="wait">Resting time</string>
+    <string name="weight">Weight</string>
 </resources>

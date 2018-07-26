@@ -5,7 +5,9 @@ import android.net.Uri;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class SessionExercise extends Exercise {
+import java.io.Serializable;
+
+public class SessionExercise extends Exercise implements Serializable{
     private int setsMin;
     private int repetitionsMin;
     private int setsMax;
@@ -14,6 +16,9 @@ public class SessionExercise extends Exercise {
     private int waitMax;
     private int weightMin;
     private int weightMax;
+
+    public SessionExercise() {
+    }
 
     public SessionExercise(String id, String name, String description, Uri image, int setsMin, int repetitionsMin, int setsMax, int repetitionsMax, int waitMin, int waitMax) {
         super(id, name, description, image);
@@ -101,6 +106,22 @@ public class SessionExercise extends Exercise {
         this.waitMax = waitMax;
     }
 
+    public JSONObject toJSON() throws JSONException {
+        JSONObject sessionExercise = new JSONObject();
+        sessionExercise.put("name", getName());
+        sessionExercise.put("description", getDescription());
+        sessionExercise.put("image", getImage());
+        sessionExercise.put("setsMin", setsMin);
+        sessionExercise.put("setsMax", setsMin);
+        sessionExercise.put("repetitionsMin", repetitionsMin);
+        sessionExercise.put("repetitionsMax", repetitionsMax);
+        sessionExercise.put("waitMin", waitMin);
+        sessionExercise.put("waitMax", waitMax);
+        sessionExercise.put("weightMin", weightMin);
+        sessionExercise.put("weightMax", weightMax);
+        return sessionExercise;
+    }
+
     @Override
     public String toString() {
         return "SessionExercise{" +
@@ -110,20 +131,8 @@ public class SessionExercise extends Exercise {
                 ", repetitionsMax=" + repetitionsMax +
                 ", waitMin=" + waitMin +
                 ", waitMax=" + waitMax +
+                ", weightMin=" + weightMin +
+                ", weightMax=" + weightMax +
                 "} " + super.toString();
-    }
-
-    public JSONObject toJSON() throws JSONException {
-        JSONObject sessionExercise = new JSONObject();
-        sessionExercise.put("name", getName());
-        sessionExercise.put("description", getDescription());
-        sessionExercise.put("image", getImage());
-        sessionExercise.put("setsMin", setsMin);
-        sessionExercise.put("setsMax", setsMin);
-        sessionExercise.put("repetitionsMin", setsMin);
-        sessionExercise.put("repetitionsMax", setsMin);
-        sessionExercise.put("waitMin", setsMin);
-        sessionExercise.put("waitMax", setsMin);
-        return sessionExercise;
     }
 }

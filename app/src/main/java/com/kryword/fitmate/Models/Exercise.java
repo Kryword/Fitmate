@@ -5,7 +5,9 @@ import android.net.Uri;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Exercise {
+import java.io.Serializable;
+
+public class Exercise implements Serializable{
     private String id;
     private String name;
     private String description;

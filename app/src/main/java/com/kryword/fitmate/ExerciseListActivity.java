@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.kryword.fitmate.Models.Exercise;
@@ -19,15 +20,22 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ExerciseListActivity extends AppCompatActivity {
 
     private static final int REQUEST_CODE_NEW_EXERCISE = 1;
+    private boolean sendExercise;
     ExerciseAdapter adapter;
+    List<Exercise> exercises;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise_list);
+        exercises = new ArrayList<>();
         adapter = new ExerciseAdapter(getApplicationContext());
         ListView listView = findViewById(R.id.list_exercises);
         listView.setAdapter(adapter);
@@ -35,7 +43,7 @@ public class ExerciseListActivity extends AppCompatActivity {
         File[] list = fileDir.listFiles();
         if (list.length == 0) {
             Log.d("Empty?", "Is totally empty");
-        }else{
+        } else {
             for (File exerciseFile :
                     list) {
                 // Uncomment next line when you need to delete all exercises
@@ -57,16 +65,41 @@ public class ExerciseListActivity extends AppCompatActivity {
                     Exercise exercise = new Exercise();
                     exercise.setName(exerciseJSON.getString("name"));
                     exercise.setDescription(exerciseJSON.getString("description"));
-                    Log.d("A SABER", (String)exerciseJSON.get("image"));
-                    exercise.setImage(Uri.parse((String)exerciseJSON.get("image")));
+                    exercise.setImage(Uri.parse((String) exerciseJSON.get("image")));
+                    exercises.add(exercise);
                     adapter.add(exercise);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
         }
-    }
 
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        try {
+            int getAnExercise = bundle.getInt("intention");
+            sendExercise = true;
+        }catch (NullPointerException e){
+            sendExercise = false;
+        }finally {
+            if (sendExercise){
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Exercise exercise = exercises.get(position);
+                        Intent intent = new Intent();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("name", exercise.getName());
+                        bundle.putString("description", exercise.getDescription());
+                        bundle.putParcelable("image", exercise.getImage());
+                        intent.putExtras(bundle);
+                        setResult(RESULT_OK, intent);
+                        finish();
+                    }
+                });
+            }
+        }
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
